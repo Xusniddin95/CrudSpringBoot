@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <title>Talaba Management System</title>
+</head>
+<body>
+
+    <div class="container text-center">
+        <div class="jumbotron">
+            <h1 class="text-bg-info text-white text-center">Student Page</h1>
+        </div>
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr class="align-middle">
+                    <th>ID</th>
+                    <th>Student First Name</th>
+                    <th>Student First Last Name</th>
+                    <th>Student First Email Address</th>
+                    <th>
+                        <a th:href="@{/showNewTalabaForm}" class="btn btn-outline-light">Add Student</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="talaba:${listTalaba}">
+                    <td th:text="${talaba.id}"></td>
+                    <td th:text="${talaba.name}"></td>
+                    <td th:text="${talaba.lastName}"></td>
+                    <td th:text="${talaba.email}"></td>
+                    <td>
+                        <a th:href="@{/showFormUpdate/{id}(id=${talaba.id})}" class="btn btn-info"><i class=""></i>edit</a>
+                        <a th:href="@{/deleteTalaba/{id}(id=${talaba.id})}"  class="btn btn-danger"><i class=""></i>delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="../static/js/bootstrap.bundle.js"></script>
+</body>
+</html>
